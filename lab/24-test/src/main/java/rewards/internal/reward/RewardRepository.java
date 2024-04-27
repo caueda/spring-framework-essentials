@@ -1,5 +1,6 @@
 package rewards.internal.reward;
 
+import org.springframework.stereotype.Repository;
 import rewards.AccountContribution;
 import rewards.Dining;
 import rewards.RewardConfirmation;
