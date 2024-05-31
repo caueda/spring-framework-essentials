@@ -3,11 +3,15 @@ package rewards.internal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import config.RewardsConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import common.money.MonetaryAmount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import rewards.AccountContribution;
 import rewards.Dining;
 import rewards.RewardConfirmation;
@@ -22,23 +26,12 @@ import rewards.internal.reward.RewardRepository;
  * Besides helping catch bugs early, tests are a great way for a new developer to learn an API as he or she can see the
  * API in action. Tests also help validate a design as they are a measure for how easy it is to use your code.
  */
+@EnableAutoConfiguration
+@SpringBootTest(classes ={RewardsConfig.class})
 public class RewardNetworkImplTests {
 
-	/**
-	 * The object being tested.
-	 */
+	@Autowired
 	private RewardNetworkImpl rewardNetwork;
-
-	@BeforeEach
-	public void setUp() throws Exception {
-		// create stubs to facilitate fast in-memory testing with dummy data and no external dependencies
-		AccountRepository accountRepo = new StubAccountRepository();
-		RestaurantRepository restaurantRepo = new StubRestaurantRepository();
-		RewardRepository rewardRepo = new StubRewardRepository();
-
-		// setup the object being tested by handing what it needs to work
-		rewardNetwork = new RewardNetworkImpl(accountRepo, restaurantRepo, rewardRepo);
-	}
 
 	@Test
 	@Disabled

@@ -11,7 +11,7 @@ package rewards.internal.account;
 //  TODO-03: Alter this interface to extend a proper Spring Data interface.
 //  - The finder method on this class must be changed to obey Spring Data
 //    conventions - use refactoring feature of the IDE
-public interface AccountRepository {
+public interface AccountRepository extends org.springframework.data.repository.Repository<Account, Long>{
 
 	/**
 	 * Load an account by its credit card.
@@ -21,6 +21,6 @@ public interface AccountRepository {
 	 * @return the account object
 	 */
 	// To refactor: right click on the method name -> Refactor -> Rename
-	public Account findByCreditCard(String creditCardNumber);
+	public Account findByCreditCardNumber(String creditCardNumber);
 
 }

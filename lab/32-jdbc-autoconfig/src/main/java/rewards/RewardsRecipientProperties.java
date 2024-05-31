@@ -1,5 +1,10 @@
 package rewards;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
 // TODO-06 : Capture properties into a class using @ConfigurationProperties
 // - Note that application.properties file already contains the following properties
 //
@@ -19,6 +24,12 @@ package rewards;
 //   (3) Annotate this class with @Component
 // - Implement a new command line runner that displays the name of the rewards
 //   recipient when the application gets started
+@Getter @Setter
+@Component
+@ConfigurationProperties(prefix = "rewards.recipient")
 public class RewardsRecipientProperties {
-
+    private String name;
+    private int age;
+    private String gender;
+    private String hobby;
 }
